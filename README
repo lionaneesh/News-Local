@@ -1,0 +1,25 @@
+Introduction
+============
+
+Ever wanted to get instant news on what's happening around you? If yes,
+News-Local is your one stop solution, just 1 click away.
+
+Reports
+=======
+
+1) Please make a new file under the doc/ folder, documenting what you are working on.
+2) Also, Please do edit the doc/ files, if you can figure out something which you wish was in the documentation. Maybe we can send it to the dart team so, that it can be added to the present documentation.
+
+
+TODO
+====
+
+1) Finish the basic functionality as discussed in the hackathon.
+2) Is it possible to get in G+ updates from the user's id and publish those as well?
+
+The Hackers
+===========
+
+Aneesh Dogra    <lionaneesh-at-gmail>
+Jaskirat Singh  <jaskiratsingh76-at-gmail>
+Mohit Arora	    <blitz.mohit@gmail.com>
