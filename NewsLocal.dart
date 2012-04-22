@@ -1,7 +1,6 @@
 #import('dart:html');
 #import('dart:json');
 
-// @TODO: Use templates -- Still not implemented in DART SDK 
 // @TODO: Add G+ api
 // @TODO: Add location detector
 
