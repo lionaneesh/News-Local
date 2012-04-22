@@ -4,7 +4,6 @@
 // @TODO: Use templates -- Still not implemented in DART SDK 
 // @TODO: Add G+ api
 // @TODO: Add location detector
-// @TODO: Figure out a way to remove those doublequotes from the news
 
 dataReceived(MessageEvent e) {
   var data = JSON.parse(e.data);   
@@ -15,16 +14,25 @@ dataReceived(MessageEvent e) {
   div_wrapper = document.query('#wrapper');
   
   for (var a = 0; a < data['responseData']['results'].length; a++) {
+    var headline = JSON.stringify(data['responseData']['results'][a]['title']);
+    var content  = JSON.stringify(data['responseData']['results'][a]['content']);
+    
+    // @HACK: for removing double quoates
+    headline = headline.replaceAll(new RegExp("\"\$"), '');
+    headline = headline.replaceAll(new RegExp("^\""), '');
+    content  = content.replaceAll(new RegExp("\"\$"), '');
+    content  = content.replaceAll(new RegExp("^\""), '');
+    
     Element div_news = new Element.tag('div');
     div_news.attributes['id'] = 'news';
     div_wrapper.elements.add(div_news);
     div_news = document.query('#news');
     
     Element news_title               = new Element.tag('h3');
-    news_title.innerHTML             = JSON.stringify(data['responseData']['results'][a]['title']);
+    news_title.innerHTML             = headline;
     div_news.elements.add(news_title);
     Element news_content             = new Element.tag('p');
-    news_content.innerHTML           = JSON.stringify(data['responseData']['results'][a]['content']) + ' -- ' +
+    news_content.innerHTML           =  content + " " +
                                        "<a href=" + JSON.stringify(data['responseData']['results'][a]['signedRedirectUrl']) +
                                        ">" + "[Read More]" + "</a>";
     news_content.attributes['class'] = 'content';
