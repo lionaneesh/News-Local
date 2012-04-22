@@ -4,6 +4,7 @@
 // @TODO: Add G+ api
 // @TODO: Add location detector
 
+
 dataReceived(MessageEvent e) {
   var data = JSON.parse(e.data);   
  
@@ -39,10 +40,12 @@ dataReceived(MessageEvent e) {
 }
 
 void main() {
-  // listen for the postMessage from the main page
-  window.on.message.add(dataReceived);
+  // listen for the postMessage from the main
   
+  var city = window.localStorage["CITY"];
+  window.on.message.add(dataReceived);
   Element script = new Element.tag("script");
-  script.src = "https://ajax.googleapis.com/ajax/services/search/news?v=1.0&q=Panchkula&callback=callbackForJsonpApi";
+  city = "Chandigarh";
+  script.src = "https://ajax.googleapis.com/ajax/services/search/news?v=1.0&q=" + city + "&callback=callbackForJsonpApi";
   document.body.elements.add(script);
 }
