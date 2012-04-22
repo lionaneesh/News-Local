@@ -25,7 +25,6 @@ dataReceived(MessageEvent e) {
     Element div_news = new Element.tag('div');
     div_news.attributes['id'] = 'news';
     div_wrapper.elements.add(div_news);
-    div_news = document.query('#news');
     
     Element news_title               = new Element.tag('h3');
     news_title.innerHTML             = headline;
@@ -36,8 +35,6 @@ dataReceived(MessageEvent e) {
                                        ">" + "[Read More]" + "</a>";
     news_content.attributes['class'] = 'content';
     div_news.elements.add(news_content);
-    Element hr                       = new Element.tag('hr');
-    div_news.elements.add(hr);
   }
 }
 
