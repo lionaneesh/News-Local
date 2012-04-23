@@ -2,94 +2,26 @@
 
 <html>
   <head>
-    <title>News-Local | A Dart Hackathon Project</title>
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script> 
-
-<script type="text/javascript">
-function initialize() {
-    geocoder = new google.maps.Geocoder();
-}
-</script>
-
-<script type="text/javascript"> 
-function callbackForJsonpApi(s) {
-  		window.postMessage(JSON.stringify(s), '*');
+    <title>NewsLocal</title>
+    <script type="text/javascript">
+	function callbackForJsonpApi(s) {
+    	s.target = "dartJsonHandler"
+    	window.postMessage(JSON.stringify(s), '*');
 	}
-  var geocoder;
-
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
-} 
-//Get the latitude and the longitude;
-function successFunction(position) {
-    var lat = position.coords.latitude;
-    var lng = position.coords.longitude;
-    codeLatLng(lat, lng)
-}
-
-function errorFunction(){
-    alert("Geocoder failed");
-}
-
-  function codeLatLng(lat, lng) {
-
-    var latlng = new google.maps.LatLng(lat, lng);
-    geocoder.geocode({'latLng': latlng}, function(results, status) {
-      if (status == google.maps.GeocoderStatus.OK) {
-      //console.log(results);
-        if (results[1]) {
-        var indice=0;
-        for (var j=0; j<results.length; j++)
-        {
-            if (results[j].types[0]=='locality')
-                {
-                    indice=j;
-                    break;
-                }
-            }
-       // alert('The good number is: '+j);
-        console.log(results[j]);
-        for (var i=0; i<results[j].address_components.length; i++)
-            {
-                if (results[j].address_components[i].types[0] == "locality") {
-                        //this is the object you are looking for
-                        city = results[j].address_components[i];
-                    }
-                if (results[j].address_components[i].types[0] == "administrative_area_level_1") {
-                        //this is the object you are looking for
-                        region = results[j].address_components[i];
-                    }
-                if (results[j].address_components[i].types[0] == "country") {
-                        //this is the object you are looking for
-                        country = results[j].address_components[i];
-                    }
-            }
-
-            //city data
-            //alert(city.long_name + " || " + region.long_name + " || " + country.short_name)
-			var city = city.long_name;
-			localStorage.setItem('CITY', city);
-			console.log("CITY : " + localStorage.getItem("CITY"));
-
-            } else {
-              alert("No results found");
-            }
-        //}
-      } else {
-        alert("Geocoder failed due to: " + status);
-      }
-    });
-  }
-</script>
-<link type="text/css" rel="stylesheet" href="NewsLocal.css">
-</head> 
-<body onload="initialize()"> 
+	function callbackForMapsApi(s) {
+    	s.target = "dartMapsHandler";
+    	window.postMessage(JSON.stringify(s), '*');
+	}
+	</script>
+	<link type="text/css" rel="stylesheet" href="NewsLocal.css">
+  </head>
+<body>
   	<table>
     	<tbody>
     	<tr>
     		<td rowspan=2><img src="http://code.google.com/p/dart/logo?cct=1334651453" alt="logo"/></td>
     		<td><h1>News-Local</h1></td>
-    	<a href="http://github.com/lionaneesh/News-Local"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/camo.github.com/abad93f42020b733148435e2cd92ce15c542d320/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub"></a>
+    	<a href="http://github.com/blitzmohit/News-Local"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/camo.github.com/abad93f42020b733148435e2cd92ce15c542d320/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub"></a>
     	</tr>
     	<tr>
     		<td></td>
