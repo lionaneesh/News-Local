@@ -1,5 +1,0 @@
-1. In http://www.dartlang.org/articles/embedding-in-html/ it is specified that we can use document.getElementById(), but actually i was not able to use this, the only way to get an element is using document.query()
-
-2. In http://www.dartlang.org/language-tour/ -- "StringBuffer methods" example misses a space, It should be sb.add("Use a StringBuffer ");
-
-3. Add some string manipulation functions see python's string library for inspiration. Also, adding support for string indices like string[:1] or string[1:2] would be very useful.
